@@ -1,0 +1,6 @@
+name: My name
+birthdate: 1900-30-03
+message: 
+
+This message is signed?
+
