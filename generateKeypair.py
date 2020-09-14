@@ -7,17 +7,17 @@ ap = argparse.ArgumentParser()
 
 # Add the arguments to the parser
 ap.add_argument("-p", "--passphrase", required=False,
-   help="The passphrase (Optional)")
+   help="The passphrase for the keys (Optional)")
 
-ap.add_argument("-f", "--filename", required=False,
-   help="The filename to export the keys (Optional. If not given, assume the name 'key_pen')")
+ap.add_argument("-o", "--output", required=False,
+   help="The name of the keys (Optional. If not given, assume the name 'key_pen')")
 
 args = vars(ap.parse_args())
 
 # ----------------------------------------------------------
 
 passphrase = args['passphrase']
-key_name = args['filename'] or "key_pen"
+key_name = args['output'] or "key_pen"
 
 # Generate 2024-bit RSA key pair (private + public key)
 keyPair = RSA.generate( bits = 2024 ) # use 3072 for production

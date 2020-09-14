@@ -11,7 +11,7 @@ import argparse
 ap = argparse.ArgumentParser()
 
 # Add the arguments to the parser
-ap.add_argument("-f", "--file", required=True,
+ap.add_argument("-i", "--input", required=True,
    help="The file with a message to sign")
 
 ap.add_argument("-p", "--passphrase", required=False,
@@ -24,7 +24,7 @@ args = vars(ap.parse_args())
 
 # ----------------------------------------------------------
 
-file_message = args['file']
+file_message = args['input']
 passphrase = args['passphrase']
 keys_file_name = args['keys'] or "key_pen"
 

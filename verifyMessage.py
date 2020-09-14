@@ -11,21 +11,21 @@ import argparse
 ap = argparse.ArgumentParser()
 
 # Add the arguments to the parser
-ap.add_argument("-f", "--filename", required=True,
+ap.add_argument("-i", "--input", required=True,
    help="The passphrase (Optional)")
 
-ap.add_argument("-k", "--keys", required=False,
+ap.add_argument("-o", "--output", required=False,
    help="The filename of the keys file without extension (Optional. If not given, assume the name 'key_pen')")
 
 args = vars(ap.parse_args())
 
-keys_file_name = args['keys'] or "key_pen"
+keys_file_name = args['output'] or "key_pen"
 
 # ----------------------------------------------------------
 
 try:
     # Open the message
-    with open( args['filename'], 'rb') as m:
+    with open( args['input'], 'rb') as m:
         message = m.read()
 
     # Verify valid PKCS#1 v1.5 signature (RSAVP1)
