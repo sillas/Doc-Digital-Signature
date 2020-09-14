@@ -7,7 +7,7 @@ I'm using Python 3.7+ here.
 $ pip3 install pycryptodome
 ```
 # 1 - Generate the Public and Private keys first
-- keys filename without extension
+
 ```
 $ python3 generateKeypair.py [ -p passphrase ] [ -o output ]
 ```
@@ -20,7 +20,7 @@ Output:
 ```
 
 # 2 - Sign the message in a file
-- keys filename without extension
+
 ```
 $ python3 signTheMessage.py -i filename.ext  [ -p passphrase ] [ -k keys ]
 ```
@@ -34,7 +34,7 @@ Output:
 ```
 
 # 3 - Verify the message
-- signature filename without extension
+
 ```
 $ python3 verifyMessage.py -i filename.ext [ -o output ]
 ```
