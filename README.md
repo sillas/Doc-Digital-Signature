@@ -27,7 +27,7 @@ $ python3 signTheMessage.py -i filename.ext  [ -p passphrase ] [ -k keys ] [ -o 
 - -i \[--input\]: File to be signed.
 - -p \[--passphrase\]: The passphrase of the keys (If provided when keys were generated).
 - -k \[--keys\]: The name of the keys, if provided when keys were generated. If not given, assume the name "key_pen".
-- -o \[--output\]: The signature key name
+- -o \[--output\]: The signature key name.
 
 Output:
 ```
@@ -40,7 +40,7 @@ Output:
 $ python3 verifyMessage.py -i filename.ext [ -o output ]
 ```
 - -i \[--input\]: File to be verified.
-- -o \[--output \]: The name of the signing key (If not given, assume the name "key_pen")
+- -k \[--keys \]: The name of the signing key (If not given, assume the name "key_pen")
 - -s \[--signature\]: The signature filename (stored in "signatures" folder)
 
 Output:
