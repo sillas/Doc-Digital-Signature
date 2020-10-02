@@ -20,7 +20,7 @@ passphrase = args['passphrase']
 key_name = args['output'] or "key_pen"
 
 # Generate 2024-bit RSA key pair (private + public key)
-keyPair = RSA.generate( bits = 2024 ) # use 3072 for production
+keyPair = RSA.generate( bits = 3072 ) # use 3072 for production
 pubKey = keyPair.publickey()
 
 with open(f'.keys/{ key_name }.pub', 'wb') as pub_key:

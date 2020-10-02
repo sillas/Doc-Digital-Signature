@@ -12,13 +12,16 @@ ap = argparse.ArgumentParser()
 
 # Add the arguments to the parser
 ap.add_argument("-i", "--input", required=True,
-   help="The file with a message to sign")
+   help = "The file with a message to sign")
 
 ap.add_argument("-p", "--passphrase", required=False,
-   help="The passphrase (Optional)")
+   help = "The passphrase (Optional)")
 
 ap.add_argument("-k", "--keys", required=False,
-   help="The filename of the keys file without extension (Optional. If not given, assume the name 'key_pen')")
+   help = "The filename of the keys file without extension (Optional. If not given, assume the name 'key_pen')")
+
+ap.add_argument("-o", "--output", required=True,
+   help = "The name for the generated signature output file." )
 
 args = vars(ap.parse_args())
 
@@ -27,6 +30,7 @@ args = vars(ap.parse_args())
 file_message = args['input']
 passphrase = args['passphrase']
 keys_file_name = args['keys'] or "key_pen"
+output = args['output']
 
 try:
     with open( file_message, 'rb' ) as m:
@@ -44,7 +48,7 @@ hash = SHA384.new( message )
 signer = PKCS1_v1_5.new( keyPair )
 signature = signer.sign( hash )
 
-with open(f'.keys/{ keys_file_name }.sign', 'wb') as sign_key:
+with open(f'signatures/{ output }.sign', 'wb') as sign_key:
     sign_key.write( signature )
 
-print(f'The message has SIGNED and de signature key is created on .keys/{ keys_file_name }.sign')
+print(f'The message has SIGNED and de signature key is stored on signatures/{ output }.sign')

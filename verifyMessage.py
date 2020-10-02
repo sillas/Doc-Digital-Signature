@@ -12,14 +12,18 @@ ap = argparse.ArgumentParser()
 
 # Add the arguments to the parser
 ap.add_argument("-i", "--input", required=True,
-   help="The passphrase (Optional)")
+   help="The filename to verify")
 
-ap.add_argument("-o", "--output", required=False,
+ap.add_argument("-k", "--keys", required=False,
    help="The filename of the keys file without extension (Optional. If not given, assume the name 'key_pen')")
+
+ap.add_argument("-s", "--signature", required=True,
+   help="The signature name (stored in \"signatures\" folder)")
 
 args = vars(ap.parse_args())
 
-keys_file_name = args['output'] or "key_pen"
+keys_file_name = args['keys'] or "key_pen"
+signature = args['signature']
 
 # ----------------------------------------------------------
 
@@ -29,7 +33,7 @@ try:
         message = m.read()
 
     # Verify valid PKCS#1 v1.5 signature (RSAVP1)
-    with open(f'.keys/{ keys_file_name }.sign', 'rb') as sign_key:
+    with open(f'signatures/{ signature }.sign', 'rb') as sign_key:
         signature = sign_key.read()
 
     with open(f'.keys/{ keys_file_name }.pub', 'rb') as pub_key:
@@ -43,7 +47,12 @@ hash = SHA384.new( message )
 verifier = PKCS1_v1_5.new( pubKey )
 
 if( verifier.verify( hash, signature ) ):
-    print("\nThe message is signed correctly\n")
+    print("Everything is ok!\n")
 
 else:
-    print("\nCaution! The message has been modified\n")
+    print()
+    print("##############################################")
+    print("#           |                                #")
+    print("#  Caution! | The message has been modified. #")
+    print("#           |                                #")
+    print("##############################################\n")

@@ -22,11 +22,12 @@ Output:
 # 2 - Sign the message in a file
 
 ```
-$ python3 signTheMessage.py -i filename.ext  [ -p passphrase ] [ -k keys ]
+$ python3 signTheMessage.py -i filename.ext  [ -p passphrase ] [ -k keys ] [ -o output ]
 ```
 - -i \[--input\]: File to be signed.
 - -p \[--passphrase\]: The passphrase of the keys (If provided when keys were generated).
 - -k \[--keys\]: The name of the keys, if provided when keys were generated. If not given, assume the name "key_pen".
+- -o \[--output\]: The signature key name
 
 Output:
 ```
@@ -40,10 +41,11 @@ $ python3 verifyMessage.py -i filename.ext [ -o output ]
 ```
 - -i \[--input\]: File to be verified.
 - -o \[--output \]: The name of the signing key (If not given, assume the name "key_pen")
+- -s \[--signature\]: The signature filename (stored in "signatures" folder)
 
 Output:
 ```
-> The message is signed correctly
+> Everything is ok!
 or
 > Caution! The message has been modified
 ```
