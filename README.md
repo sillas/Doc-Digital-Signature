@@ -37,7 +37,7 @@ Output:
 # 3 - Verify the message
 
 ```
-$ python3 verifyMessage.py -i filename.ext [ -o output ]
+$ python3 verifyMessage.py -i filepath [ -k keys ] [ -s signature ]
 ```
 - -i \[--input\]: File to be verified.
 - -k \[--keys \]: The name of the signing key (If not given, assume the name "key_pen")
