@@ -1,5 +1,5 @@
 from Crypto.PublicKey import RSA
-
+import os
 import argparse
 
 # Construct the argument parser
@@ -22,6 +22,11 @@ key_name = args['output'] or "key_pen"
 # Generate 2024-bit RSA key pair (private + public key)
 keyPair = RSA.generate( bits = 3072 ) # use 3072 for production
 pubKey = keyPair.publickey()
+
+dirExist  =os.path.isdir('.keys')
+
+if(not dirExist ):
+    os.mkdir('.keys')
 
 with open(f'.keys/{ key_name }.pub', 'wb') as pub_key:
     pub_key.write( pubKey.export_key() )
